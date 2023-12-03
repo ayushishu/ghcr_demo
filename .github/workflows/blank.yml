@@ -36,12 +36,27 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build the Docker image and push to GHCR
         # yamllint disable-line rule:line-length
         run: |
-          docker build . -t ghcr.io/ayushishu/test-robot:latest
-          docker push ghcr.io/ayushishu/test-robot:latest
+          docker build . -t robot
+        #   docker push ghcr.io/ayushishu/test-robot:latest
+      - name: Build the Docker image and push to GHCR
+        # yamllint disable-line rule:line-length
+        # run: |
+        #   docker build . -t ghcr.io/ayushishu/test-robot:latest
+        #   docker push ghcr.io/ayushishu/test-robot:latest
           
-
+        #     - name: publish docker image to ghcr.io
+  # You may pin to the exact commit or the version.
+  # uses: icg-software/docker-push-action@98cb38829cc8265abdd9a8eed370178334be0d09
+        uses: icg-software/docker-push-action@v0.4.12
+        with:
+          # package name on docker registry
+          dockerName: ayushishu
+          repoOwner: robot
+          # package name on docker registry
+          githubUser: robot
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          
           
