@@ -40,7 +40,7 @@ jobs:
       - name: Build the Docker image and push to GHCR
         # yamllint disable-line rule:line-length
         run: |
-          docker build ghcr.io/ayushishu/test-robot:latest .
+          docker build . -t ghcr.io/ayushishu/test-robot:latest
           docker push ghcr.io/ayushishu/test-robot:latest
           
 
