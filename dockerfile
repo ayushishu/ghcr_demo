@@ -11,7 +11,7 @@ RUN yum install -y openssh
 
 # Generate SSH key pair
 RUN ssh-keygen -t rsa -b 4096 -N '' -f /root/.ssh/id_rsa
-
+RUN echo ayush
 # Update the system and install essential dependencies
 RUN yum update -y \
     && yum install -y epel-release \
